@@ -2,6 +2,7 @@ package com.example.cameraeffects;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -18,8 +19,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Example of a call to a native method
-        TextView tv = findViewById(R.id.sample_text);
-        tv.setText(stringFromJNI());
+        GLSurfaceView glSurfaceView = findViewById(R.id.bigEyeView );
+        //tv.setText(stringFromJNI());
     }
 
     /**
