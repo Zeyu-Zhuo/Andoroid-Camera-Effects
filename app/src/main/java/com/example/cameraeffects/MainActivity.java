@@ -21,7 +21,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Example of a call to a native method
         BigEyeView bigEyeView = findViewById(R.id.bigEyeView);
-        bigEyeView.setBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.test1));
+        CameraEffectsViewRender cevr = bigEyeView.getCameraEffectsViewRender();
+        cevr.setmBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.test1));
+        //bigEyeView.setBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.test1));
         //tv.setText(stringFromJNI());
     }
 
