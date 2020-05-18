@@ -17,24 +17,6 @@ import javax.microedition.khronos.opengles.GL10;
 
 
 public class BigEyeView extends GLSurfaceView {
-    private Bitmap mBitmap;
-    private int vTexture;
-    private FloatBuffer vertexBuffer;
-    private FloatBuffer textureBuffer;
-    private int[] mTextures;
-    private CameraEffectsViewRender cevr = new CameraEffectsViewRender();
-    float VERTEX[] = {
-            -1,1,
-            -1,-1,
-            1,1,
-            1,-1
-    };
-    float TEXTURE[] = {
-            0,0,
-            0,1,
-            1,0,
-            1,1
-    };
 
     public BigEyeView(Context context) {
         super(context,null );
@@ -43,19 +25,8 @@ public class BigEyeView extends GLSurfaceView {
     public BigEyeView(Context context, AttributeSet attrs) {
         super(context, attrs);
         setEGLContextClientVersion(2);
-        cevr.setmBitmap(mBitmap);
-        cevr.setContext(context);
-        setRenderer(cevr);
+        setRenderer(new CameraEffectsViewRender(this));
         setRenderMode(RENDERMODE_WHEN_DIRTY);
-        mBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.test1);
     }
 
-    public void setBitmap(Bitmap bitmap){
-        mBitmap = bitmap;
-        requestRender();
-    }
-
-    public CameraEffectsViewRender getCameraEffectsViewRender() {
-        return this.cevr;
-    }
 }

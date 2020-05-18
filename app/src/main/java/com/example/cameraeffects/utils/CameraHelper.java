@@ -32,7 +32,7 @@ public class CameraHelper implements Camera.PreviewCallback{
         startPreview(mSurfaceTexture);
     }
 
-    private void stopPreview() {
+    public void stopPreview() {
         if(mCamera!=null){
             mCamera.setPreviewCallback(null);
             mCamera.stopPreview();
@@ -41,7 +41,7 @@ public class CameraHelper implements Camera.PreviewCallback{
         }
     }
 
-    private void startPreview(SurfaceTexture surfaceTexture) {
+    public void startPreview(SurfaceTexture surfaceTexture) {
         mSurfaceTexture = surfaceTexture;
         try{
             mCamera = Camera.open(mCameraId);
