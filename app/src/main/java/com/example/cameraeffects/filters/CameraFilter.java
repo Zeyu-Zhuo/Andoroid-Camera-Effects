@@ -76,7 +76,7 @@ public class CameraFilter extends AbstractFilter{
         //变换矩阵
         GLES20.glUniformMatrix4fv(vMatrix,1,false,matrix,0);
         //激活图层
-        GLES20.glActiveTexture(GLES20.GL_TEXTURE);
+        GLES20.glActiveTexture(GLES20.GL_TEXTURE0);
         GLES20.glBindTexture(GLES11Ext.GL_TEXTURE_EXTERNAL_OES,textureId);
         GLES20.glUniform1i(vTexture,0);
         GLES20.glDrawArrays(GLES20.GL_TRIANGLE_STRIP,0,4);

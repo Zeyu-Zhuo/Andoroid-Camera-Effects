@@ -31,6 +31,8 @@ public class CameraEffectsViewRender implements GLSurfaceView.Renderer, SurfaceT
     private float[] mtx = new float[16];
     CameraFilter mCameraFilter;
     ScreenFilter mScreenFilter;
+    private int mWidth;
+    private int mHeight;
 
     public CameraEffectsViewRender(BigEyeView mView) {
         this.mView = mView;
@@ -46,10 +48,8 @@ public class CameraEffectsViewRender implements GLSurfaceView.Renderer, SurfaceT
         mSurfaceTexture = new SurfaceTexture(mTextures[0]);
         mSurfaceTexture.setOnFrameAvailableListener(this);
         //矩阵 摄像头不会变形
-        mSurfaceTexture.getTransformMatrix(mtx);
         mCameraFilter = new CameraFilter(mView.getContext());
         mScreenFilter = new ScreenFilter(mView.getContext());
-        mCameraFilter.setMatrix(mtx);
     }
 
     @Override
@@ -58,6 +58,9 @@ public class CameraEffectsViewRender implements GLSurfaceView.Renderer, SurfaceT
 
         mCameraFilter.onReady(width,height);
         mScreenFilter.onReady(width,height );
+        mWidth = width;
+        mHeight = height;
+
     }
 
     @Override
@@ -75,4 +78,5 @@ public class CameraEffectsViewRender implements GLSurfaceView.Renderer, SurfaceT
 
     @Override
     public void onFrameAvailable(SurfaceTexture surfaceTexture) { mView.requestRender(); }
+
 }
