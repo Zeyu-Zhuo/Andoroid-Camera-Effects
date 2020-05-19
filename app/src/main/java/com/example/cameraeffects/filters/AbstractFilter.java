@@ -50,10 +50,10 @@ public abstract class AbstractFilter {
         mTextureBuffer = ByteBuffer.allocateDirect(4*2*4).order(ByteOrder.nativeOrder()).asFloatBuffer();
         mTextureBuffer.clear();
         float TEXTURE[] = {
-                0,0,
                 0,1,
-                1,0,
-                1,1
+                1,1,
+                0,0,
+                1,0
         };
         mTextureBuffer.put(TEXTURE);
         initialize(context);
@@ -65,12 +65,12 @@ public abstract class AbstractFilter {
     private void initialize(Context context) {
         String vertex = Utils.loadStringFromAssets(context,vFilename);
         String fragment =Utils.loadStringFromAssets(context,fFilename);
-        int program = Utils.LoadProgram(vertex,fragment);
+        mProgram = Utils.LoadProgram(vertex,fragment);
 
-        vPosition = GLES20.glGetAttribLocation(program,"vPosition");
-        vCoord = GLES20.glGetAttribLocation(program, "vCoord");
-        vTexture = GLES20.glGetUniformLocation(program, "vTexture");
-        vMatrix = GLES20.glGetUniformLocation(program, "vMatrix");
+        vPosition = GLES20.glGetAttribLocation(mProgram,"vPosition");
+        vCoord = GLES20.glGetAttribLocation(mProgram, "vCoord");
+        vTexture = GLES20.glGetUniformLocation(mProgram, "vTexture");
+        vMatrix = GLES20.glGetUniformLocation(mProgram, "vMatrix");
     }
     public int onDrawFrame(int textureId){
         GLES20.glViewport(0,0,mWidth,mHeight);
